@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjsxt.mapper.HostMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bjsxt.pojo.Host">
+        <id column="hid" property="hid" />
+        <result column="hname" property="hname" />
+        <result column="hpwd" property="hpwd" />
+        <result column="hphone" property="hphone" />
+        <result column="starttime" property="starttime" />
+        <result column="status" property="status" />
+        <result column="strong" property="strong" />
+        <result column="ordernumber" property="ordernumber" />
+    </resultMap>
+
+</mapper>
