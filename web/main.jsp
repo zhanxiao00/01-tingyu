@@ -13,7 +13,7 @@
 <html>
 <head>
     <base href="<%=basePath %>"/>
-    <title>Title</title>
+    <title>TingYu主持人后台操作系统</title>
     <%--引入EasyUI的资源--%>
     <link rel="stylesheet" type="text/css" href="static/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="static/themes/icon.css">
@@ -27,7 +27,7 @@
     <%--布局:网站头部--%>
     <div data-options="region:'north',split:false" style="height:75px;">
         <%--使用layout的嵌套布局，将头部分为，西，中，东三部分--%>
-            <div class="easyui-layout" data-options="fit:true">
+            <div class="easyui-layout" data-options="fit:true"><%--fit:true表示与外部容器自适应--%>
                 <div data-options="region:'west',border:false" style="width:20%;text-align: center;background-image: url('static/images/bg.png')">
                     <%--显示网站的logo--%>
                         <img src="static/images/logo.png" style="margin-top: 16px;">
