@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface IMenuService extends IService<Menu> {
 
-
     List<TreeResult> selMenuInfoService(String id, Integer aid);
+
 
 }

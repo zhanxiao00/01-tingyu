@@ -21,6 +21,38 @@
     <link rel="stylesheet" type="text/css" href="static/themes/color.css">
     <script type="text/javascript" src="static/jquery.min.js"></script>
     <script type="text/javascript" src="static/jquery.easyui.min.js"></script>
+    <%--声明js代码域--%>
+    <script>
+        /*************菜单和选项卡的联动效果实现*******************/
+        $(function () {
+            //给菜单增加单机事件
+            $("#menuTree").tree({
+                onClick:function (node) {
+                    //判断当前菜单是否为上级菜单,如果是则获取其子菜单信息,不是则新增选项卡显示资源
+                    if(node.attributes.isparent == "1"){
+                        return;
+                    }else{
+                        //判断当前选项卡是否已经存在,如果存在就选中,不存在就新增
+                        var flag = $("#menuTabs").tabs("exists",node.text);
+                        //点击菜单新增选项
+                        if(flag){
+                            $("#menuTabs").tabs("select",node.text);
+                        }else{
+                            $("#menuTabs").tabs("add",{
+                                title:node.text,
+                                closable:true,
+                                content:"<iframe src='"+node.attributes.url+"' width='99%' height='99%' style='border:none'></iframe>"
+                            });
+                        }
+                    }
+
+
+                }
+            })
+        })
+
+    </script>
+
 </head>
 <body class="easyui-layout">
 <%--创建主页面布局--%>
@@ -54,9 +86,17 @@
     <%--布局:网站菜单部分--%>
     <div data-options="region:'west',title:'系统菜单',split:false,collapsible:false" style="width:150px;">
         <%--声明异步树组件--%>
-            <ul class="easyui-tree" data-options="url:'menu/menuInfo'"></ul>
+            <ul id="menuTree" class="easyui-tree" data-options="url:'menu/menuInfo'"></ul>
     </div>
     <%--布局:网站中心区域(内容区域)--%>
-    <div data-options="region:'center'" style="padding:5px;background:#eee;"></div>
+    <div data-options="region:'center'" style="padding:5px;background:#eee;">
+        <%--使用选项卡显示菜单资源--%>
+            <div id="menuTabs" class="easyui-tabs" data-options="fit:true" style="width:500px;height:250px;">
+                <div title="首页" style="padding:20px;display:none;">
+                    tab1
+                </div>
+            </div>
+
+    </div>
 </body>
 </html>

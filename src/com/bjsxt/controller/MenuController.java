@@ -32,7 +32,7 @@ public class MenuController {
     private IMenuService menuService;
 
     //声明单元方法:加载菜单信息
-    @ResponseBody//因为该方法时AJAX方法
+    @ResponseBody//因为该方法是AJAX方法
     @RequestMapping("/menuInfo")
     public List<TreeResult> MenuController(@RequestParam(defaultValue = "0") String id, HttpSession session) {
         //处理请求
