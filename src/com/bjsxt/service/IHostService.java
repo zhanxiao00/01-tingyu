@@ -2,6 +2,8 @@ package com.bjsxt.service;
 
 import com.bjsxt.pojo.Host;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.bjsxt.pojo.HostCondition;
+import com.bjsxt.pojo.PageResult;
 
 /**
  * <p>
@@ -13,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IHostService extends IService<Host> {
 
+    //分页加载主持人信息
+    PageResult<Host> selHostInfoService(Integer page, Integer rows, HostCondition hostCondition);
 }
