@@ -1,9 +1,13 @@
 package com.bjsxt.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -36,6 +40,11 @@ public class Host extends Model<Host> {
     private String strong;
 
     private Integer ordernumber;
+
+    @Setter
+    @Getter
+    @TableField(exist=false)
+    private HostPower hostPower;
 
 
     public Integer getHid() {

@@ -57,7 +57,7 @@
 <body>
     <%--创建主持人管理面板组件--%>
     <div id="p" class="easyui-panel" title="主持人管理"
-         style="width:950px;height:500px;padding:10px;background:#fafafa;"
+         style="width:1100px;height:500px;padding:10px;background:#fafafa;"
          data-options="closable:false,collapsible:false,minimizable:false,maximizable:false">
 
         <%--创建检索组件--%>
@@ -72,8 +72,8 @@
                 </select>
 
                 <select class="easyui-combobox" data-options="editable:false,value:'权重排序' " name="strong" style="width: 100px;"><%--权重排序条件--%>
-                    <option value="1">升序</option>
-                    <option value="0">降序</option>
+                    <option value="asc">升序</option>
+                    <option value="desc">降序</option>
                 </select>
 
                 <select class="easyui-combobox" data-options="editable:false,value:'星推荐' " name="hastar" style="width: 100px;"><%--星推荐条件--%>

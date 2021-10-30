@@ -12,6 +12,49 @@
         <result column="status" property="status" />
         <result column="strong" property="strong" />
         <result column="ordernumber" property="ordernumber" />
+        <association property="hostPower" javaType="com.bjsxt.pojo.HostPower">
+            <id column="hpid" property="hpid" />
+            <result column="hpstar" property="hpstar" />
+            <result column="hpstart_begindate" property="hpstartBegindate" />
+            <result column="hpstar_enddate" property="hpstarEnddate" />
+            <result column="hp_order_power" property="hpOrderPower" />
+            <result column="hpstar_begintime" property="hpstarBegintime" />
+            <result column="hpstar_endtime" property="hpstarEndtime" />
+            <result column="hpdiscount" property="hpdiscount" />
+            <result column="hp_dis_starttime" property="hpDisStarttime" />
+            <result column="hp_dis_endtime" property="hpDisEndtime" />
+            <result column="hpprice" property="hpprice" />
+            <result column="hpcosts" property="hpcosts" />
+            <result column="hostid" property="hostid" />
+        </association>
     </resultMap>
 
+    <!--动态条件联合查询主持人及其权限信息-->
+    <select id="selHostInfoMapper" resultMap="BaseResultMap">
+        select * from t_host h
+        join t_host_power p
+        on h.hid = p.hostid
+
+        /*SQL语句的动态拼接*/
+        <where>
+            <if test="hostCondition.hname!=''and hostCondition.hname!=null">
+                <bind name="hostname" value="'%'+hostCondition.hname+'%'"/>/*bind标签用于拼接字符串*/
+                and h.hname like #{hostname}
+            </if>
+            <if test="hostCondition.status!='' and hostCondition.status!=null">
+                and h.status=#{hostCondition.status}
+            </if>
+            <if test="hostCondition.hpstar!='' and hostCondition.hpstar!=null">
+                and p.hpstar=#{hostCondition.status}
+            </if>
+            <if test="hostCondition.hpdiscount!='' and hostCondition.hpdiscount!=null">
+                and p.hpdiscount=#{hostCondition.hpdiscount}
+            </if>
+        </where>
+            order by h.strong
+            <if test="hostCondition.strong!='' and hostCondition.strong!=null">
+                ${hostCondition.strong}
+            </if>
+
+    </select>
 </mapper>
