@@ -28,17 +28,14 @@
             <result column="hostid" property="hostid" />
         </association>
     </resultMap>
-
     <!--动态条件联合查询主持人及其权限信息-->
-    <select id="selHostInfoMapper" resultMap="BaseResultMap">
+    <select id="selHostInfoMapper"  resultMap="BaseResultMap">
         select * from t_host h
-        join t_host_power p
-        on h.hid = p.hostid
-
-        /*SQL语句的动态拼接*/
+        left join t_host_power p
+        on h.hid=p.hostid
         <where>
-            <if test="hostCondition.hname!=''and hostCondition.hname!=null">
-                <bind name="hostname" value="'%'+hostCondition.hname+'%'"/>/*bind标签用于拼接字符串*/
+            <if test="hostCondition.hname!='' and hostCondition.hname!=null">
+                <bind name="hostname" value="'%'+hostCondition.hname+'%'"/>
                 and h.hname like #{hostname}
             </if>
             <if test="hostCondition.status!='' and hostCondition.status!=null">
@@ -55,6 +52,5 @@
             <if test="hostCondition.strong!='' and hostCondition.strong!=null">
                 ${hostCondition.strong}
             </if>
-
     </select>
 </mapper>

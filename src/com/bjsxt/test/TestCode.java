@@ -30,7 +30,7 @@ public class TestCode {
             // dsc.setSchemaName("public");
             dsc.setDriverName("com.mysql.jdbc.Driver");
             dsc.setUsername("root");
-            dsc.setPassword("root");
+            dsc.setPassword("1234");
 
         // 包配置
             PackageConfig pc = new PackageConfig();

@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ${author}
- * @since 2021-10-16
+ * @since 2020-03-20
  */
 @TableName("t_company")
 public class Company extends Model<Company> {

@@ -12,10 +12,9 @@ import org.apache.ibatis.annotations.Param;
  * </p>
  *
  * @author ${author}
- * @since 2021-10-16
+ * @since 2020-03-20
  */
 public interface HostMapper extends BaseMapper<Host> {
-
     //分页加载主持人信息
     IPage<Host> selHostInfoMapper(IPage<Host> p, @Param("hostCondition") HostCondition hostCondition);
 }

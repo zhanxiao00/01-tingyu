@@ -46,7 +46,6 @@
         </c:if>
          <%--清除session中的登录失败的标记--%>
          <c:remove var="flag" scope="session"></c:remove>
-
         <form id="loginForm" action="admin/userLogin" method="post">
             <div class="easyui-panel" style="width:400px;padding:50px 60px" title="欢迎登录Ting域主持人项目后台管理系统">
                 <div style="margin-bottom:20px">

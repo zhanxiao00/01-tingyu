@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -12,8 +15,10 @@ import java.io.Serializable;
  * </p>
  *
  * @author ${author}
- * @since 2021-10-16
+ * @since 2020-03-20
  */
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("t_role_menu")
 public class RoleMenu extends Model<RoleMenu> {
 

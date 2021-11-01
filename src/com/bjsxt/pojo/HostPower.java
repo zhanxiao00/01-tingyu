@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalTime;
 import java.io.Serializable;
 
@@ -14,7 +16,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ${author}
- * @since 2021-10-16
+ * @since 2020-03-20
  */
 @TableName("t_host_power")
 public class HostPower extends Model<HostPower> {
@@ -26,20 +28,21 @@ public class HostPower extends Model<HostPower> {
 
     private String hpstar;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate hpstartBegindate;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate hpstarEnddate;
 
     private String hpOrderPower;
-
+    @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalTime hpstarBegintime;
-
+    @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalTime hpstarEndtime;
 
     private Integer hpdiscount;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate hpDisStarttime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate hpDisEndtime;
 
     private Double hpprice;

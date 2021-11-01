@@ -1,10 +1,15 @@
 package com.bjsxt.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -12,7 +17,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ${author}
- * @since 2021-10-16
+ * @since 2020-03-20
  */
 @TableName("t_role")
 public class Role extends Model<Role> {
@@ -25,7 +30,10 @@ public class Role extends Model<Role> {
     private String rname;
 
     private String rdesc;
-
+    @Getter
+    @Setter
+    @TableField(exist = false)
+    private List<Object> mids;
 
     public Integer getRid() {
         return rid;

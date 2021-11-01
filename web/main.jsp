@@ -13,7 +13,7 @@
 <html>
 <head>
     <base href="<%=basePath %>"/>
-    <title>TingYu主持人后台操作系统</title>
+    <title>Title</title>
     <%--引入EasyUI的资源--%>
     <link rel="stylesheet" type="text/css" href="static/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="static/themes/icon.css">
@@ -22,44 +22,42 @@
     <script type="text/javascript" src="static/jquery.min.js"></script>
     <script type="text/javascript" src="static/jquery.easyui.min.js"></script>
     <%--声明js代码域--%>
-    <script>
-        /*************菜单和选项卡的联动效果实现*******************/
-        $(function () {
-            //给菜单增加单机事件
-            $("#menuTree").tree({
-                onClick:function (node) {
-                    //判断当前菜单是否为上级菜单,如果是则获取其子菜单信息,不是则新增选项卡显示资源
-                    if(node.attributes.isparent == "1"){
-                        return;
-                    }else{
-                        //判断当前选项卡是否已经存在,如果存在就选中,不存在就新增
-                        var flag = $("#menuTabs").tabs("exists",node.text);
-                        //点击菜单新增选项
-                        if(flag){
-                            $("#menuTabs").tabs("select",node.text);
-                        }else{
-                            $("#menuTabs").tabs("add",{
-                                title:node.text,
-                                closable:true,
-                                content:"<iframe src='"+node.attributes.url+"' width='99%' height='99%' style='border:none'></iframe>"
-                            });
-                        }
-                    }
-
-
-                }
+    <script type="text/javascript">
+        /*****************菜单和选项卡的联动效果实现*******************************************/
+            $(function () {
+                //给菜单增加单击事件
+               $("#menuTree").tree({
+                   onClick:function (node) {
+                       //判断当前菜单是否为上级菜单，如果是则获取其子菜单信息，不是则新增选项卡显示资源
+                       if(node.attributes.isparent=="1"){
+                           return;
+                       }else{
+                           //判断当前选项卡是否已经存在，如果存在则选中，不存在则新增
+                           var flag=$("#menuTabs").tabs('exists',node.text);
+                           if(flag){
+                               $("#menuTabs").tabs('select',node.text);
+                           }else{
+                               //点击菜单新增选项卡显示菜单的资源
+                               $("#menuTabs").tabs('add',{
+                                   title:node.text,
+                                   closable:true,
+                                   content:"<iframe src='"+node.attributes.url+"' width='99%' height='99%' style='border: none'></iframe>"
+                               });
+                           }
+                       }
+                   }
+               })
             })
-        })
+
 
     </script>
-
 </head>
 <body class="easyui-layout">
 <%--创建主页面布局--%>
     <%--布局:网站头部--%>
     <div data-options="region:'north',split:false" style="height:75px;">
         <%--使用layout的嵌套布局，将头部分为，西，中，东三部分--%>
-            <div class="easyui-layout" data-options="fit:true"><%--fit:true表示与外部容器自适应--%>
+            <div class="easyui-layout" data-options="fit:true">
                 <div data-options="region:'west',border:false" style="width:20%;text-align: center;background-image: url('static/images/bg.png')">
                     <%--显示网站的logo--%>
                         <img src="static/images/logo.png" style="margin-top: 16px;">
@@ -90,13 +88,10 @@
     </div>
     <%--布局:网站中心区域(内容区域)--%>
     <div data-options="region:'center'" style="padding:5px;background:#eee;">
-        <%--使用选项卡显示菜单资源--%>
+        <%--使用选项卡组件显示菜单资源--%>
             <div id="menuTabs" class="easyui-tabs" data-options="fit:true" style="width:500px;height:250px;">
-                <div title="首页" style="padding:20px;display:none;">
-                    tab1
-                </div>
+                <div title="首页" style="padding:20px;display:none;"> tab1</div>
             </div>
-
     </div>
 </body>
 </html>

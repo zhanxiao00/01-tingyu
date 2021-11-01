@@ -17,7 +17,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ${author}
- * @since 2021-10-16
+ * @since 2020-03-20
  */
 @TableName("t_host")
 public class Host extends Model<Host> {
@@ -40,10 +40,9 @@ public class Host extends Model<Host> {
     private String strong;
 
     private Integer ordernumber;
-
     @Setter
     @Getter
-    @TableField(exist=false)
+    @TableField(exist = false)
     private HostPower hostPower;
 
 
